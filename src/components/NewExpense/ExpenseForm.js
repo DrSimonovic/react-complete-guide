@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = (prop) => {
-  const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+const ExpenseForm = (props) => {
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: "",
@@ -36,7 +36,7 @@ const ExpenseForm = (prop) => {
     //   enteredDate: event.target.value,
     // });
   };
-  
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -44,13 +44,13 @@ const ExpenseForm = (prop) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
-    }
+    };
 
-    prop.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
-  }
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
 
   return (
     <form onSubmit={submitHandler}>
@@ -86,6 +86,9 @@ const ExpenseForm = (prop) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
